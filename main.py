@@ -65,7 +65,8 @@ class Dataset:
         return train_loader, test_loader
 
 def train_model(model, train_loader, optimizer, epoch, writer):
-    model.train()
+    model.train()	
+    optimizer=torch.optim.Adam(model.parameters(),lr=0.001)    #changing optimizer
     for batch_idx, (data, label) in enumerate(train_loader):
         optimizer.zero_grad()
         output = model(data)
